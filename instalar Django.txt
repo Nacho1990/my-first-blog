@@ -1,0 +1,57 @@
+INSTA�AR PYTHON
+Primero instalar python en c:\python36
+
+CREAR UN DIRECTORIO (DONDE SE VA A INSTALAR LA APP) Y DENTRO CREAR EL ENTORNO VIRTUAL:
+C:\Users\Name\directorio> C:\Python36\python -m venv myvenv   //myenv puede tener el nombre que querramos
+
+EEJECUTAR EL ENTORNO VIRTUAL:
+C:\Users\Name\DIRECTORIO> myvenv\Scripts\activate
+
+// EN WINDOWS SE VISUALIZARA LO SIFGUIENTE
+(myvenv) C:\Users\Name\DIRECTORIO>
+
+INSTALAR DJANGO
+(myvenv) C:\Users\Name\DIRECTORIO> pip install django==1.8
+
+INCIAR PROYECTO EN PYTHON
+(myvenv) C:\Users\Name\DIRECTORIO> django-admin.py startproject mysite .
+
+EN EL ARCHIVO mysite/settings.py CAMBIAR LA ZONA HORARIA
+ TIME_ZONE = 'Argentina'
+//AGREGAR ESA LINEA
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+PARA CREAR LA BASE D DATOS (USA SQLITE3)
+(myvenv) C:\Users\Name\DIRECTORIO> python manage.py migrate
+
+LEVANTA EL SERVIDOR DE LA APLICACION RECIEN CREADA
+(myvenv) C:\Users\Name\DIRECTORIO> python manage.py runserver
+
+-----------------///////////////CREAR APP FRONT END-----------------&//////////////////////-
+PARA CREAR LA  APP
+(myvenv) C:\Users\Name\DIRECTORIO> python manage.py startapp blog
+
+MODIFICAR ARCHIVO
+mysite/settings.py
+AGREGAR EL NOMBRE DE LA APP CREADA, EN ESTE CASO BLOG
+INSTALLED_APPS y a�adir una l�nea que contenga 'blog',
+
+
+PARA A�ADIR LOS MODELOS CREADOS A LA BASE DE DATOS
+python manage.py makemigrations blog
+
+MIGRA LOS MODELOS
+python manage.py migrate blog
+
+PARA VERIFICAR QUE TODO FUE CORRECTAMENTE CREADO
+http://127.0.0.1:8000/admin
+
+PARA CREAR SUPERuSUARIO
+python manage.py createsuperuser
+Username: admin
+Email address: admin@admin.com
+Password: admin123
+Password (again): admin123
+Superuser created successfully.
+
+          documentacion del panel de admin https://docs.djangoproject.com/en/1.8/ref/contrib/admin/
